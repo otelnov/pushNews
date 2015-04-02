@@ -28,8 +28,11 @@ angular.module('app.controllers')
 		});
 	})
 
-	.controller('ProfileCtrl', function ($scope) {
-
+	.controller('ProfileCtrl', function ($scope, UserService) {
+		$scope.username = UserService.current().username;
+		$scope.logout = function () {
+			UserService.logout();
+		};
 	})
 
 	.controller('LoginCtrl', function ($scope, $state, $cordovaOauth, UserService, Config, $ionicPlatform, $ionicLoading, $cordovaPush) {
