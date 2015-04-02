@@ -3,5 +3,9 @@
   "private": "true",
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#1.0.0-rc.2"
+  },
+  "dependencies": {
+    "ngCordova": "~0.1.14-alpha",
+    "angular-local-storage": "~0.1.5"
   }
 }
