@@ -1,11 +1,31 @@
 angular.module('app.controllers')
 
-	.controller('NewsCtrl', function ($scope) {
+	.controller('NewsCtrl', function ($scope, NewsService, $ionicLoading) {
+		$ionicLoading.show({
+			template: 'Loading...'
+		});
+		NewsService.all().then(function (news) {
+			$scope.news = news;
+			$ionicLoading.hide();
+		});
 
+		$scope.refresh = function () {
+			NewsService.all().then(function (news) {
+				$scope.news = news;
+				$scope.$broadcast('scroll.refreshComplete');
+			});
+		};
 	})
 
-	.controller('DetailsCtrl', function ($scope) {
-
+	.controller('DetailsCtrl', function ($scope, $state, NewsService, $ionicLoading) {
+		$ionicLoading.show({
+			template: 'Loading...'
+		});
+		var id = $state.params.id;
+		NewsService.one(id).then(function (news) {
+			$scope.news = news;
+			$ionicLoading.hide();
+		});
 	})
 
 	.controller('ProfileCtrl', function ($scope) {

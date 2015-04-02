@@ -1,0 +1,15 @@
+<ion-view view-title="Good News">
+  <ion-content>
+    <div class="card">
+      <div class="item item-divider">
+        {{news.createdAt | date : fullDate}}
+      </div>
+      <div class="item item-text-wrap">
+        {{news.text}}
+      </div>
+      <div class="item item-divider">
+        by {{news.username}}
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
