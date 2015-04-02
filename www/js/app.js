@@ -19,6 +19,12 @@ angular.module('app', [
 				// org.apache.cordova.statusbar required
 				StatusBar.styleDefault();
 			}
+
+			$rootScope.$on('$cordovaPush:notificationReceived', function (event, notification) {
+				if (notification.alert) {
+					navigator.notification.alert(notification.alert);
+				}
+			});
 		});
 
 		$rootScope.$on('$stateChangeStart', function (event, toState) {
