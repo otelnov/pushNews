@@ -21,6 +21,11 @@ app.use(function (req, res, next) {
 	}
 });
 
+app.use(express.static(__dirname + '/adminpanel'));
+app.get('/add-news', function (req, res) {
+	res.sendFile(__dirname + '/adminpanel/add-news.html');
+});
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: true
